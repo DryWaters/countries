@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { AppState, Region } from "../../model/IApp";
+import {AppState, Region} from "../../model/IApp";
 
 import Country from "../../components/Country/Country";
 
@@ -48,6 +48,16 @@ const Dashboard = () => {
     }
 
     const filterCountryRegions = (filterRegion: Region) => {
+
+        if (filterRegion === Region.ALL) {
+            return setCountries({
+                countries: countryState.countries,
+                filterText: countryState.filterText,
+                filterRegion,
+                filteredCountries: countryState.countries}
+            );
+        }
+
         const newCountries = [...countryState.countries].filter(country =>
             country["region"] === filterRegion
         );

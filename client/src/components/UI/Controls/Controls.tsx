@@ -1,8 +1,16 @@
 import React, {ChangeEvent} from "react";
 
 import classes from "./Controls.module.scss";
+import { Region } from "../../../model/IApp";
 
-const Controls = (props : any) => (
+type ControlsProps = {
+        onFilterTextChange: (text: string) => void;
+        onFilterRegionChange: (text: Region) => void;
+        filterText: string
+        filterRegion: Region
+}
+
+const Controls = (props: ControlsProps) => (
     <div className={classes.Controls}>
         <input
             className={classes.filterText}
@@ -14,11 +22,14 @@ const Controls = (props : any) => (
         />
         <select
             className={classes.filterRegion}
-            onChange={(e: ChangeEvent<HTMLSelectElement>) => props.onFilterRegionChange(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+                    console.log("Selected region: " + e.target.value);
+                    return props.onFilterRegionChange(e.target.value as Region)
+            }}
             value={props.filterRegion}
             id="filterRegion"
-            required
         >
+                <option hidden>Filter by Region</option>
                 <option value="Africa">Africa</option>
                 <option value="Americas">America</option>
                 <option value="Asia">Asia</option>
