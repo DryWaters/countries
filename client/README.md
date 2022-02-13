@@ -1,46 +1,28 @@
-# Getting Started with Create React App
+#TODO:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##Client
+1. Filter by country name &#10003;
+2. Change to name from countryName for route
+3. Update one container to FC with hooks
+4. Fix Select Dropdown to match screenshots
+5. Encode/Decode URI to deal with names with spaces?  
+   1. Why is this api not doing that??
+   2. Why no pagination?  Really big API calls don't need 300 at a time
+6. Styling
+7. Mobile CSS Rules
+8. DARK Mode??  Variables with SASS?  Can do like [theme].[component].[element]?
+   1. What to do if we have a bunch of different themes?
 
-## Available Scripts
+##Server
+1. Build out API
+   1. /api/countries
+   2. /api/countries/:name
+2. Add middleware that uses inmemory-cache
+   1. Proxy between front end and this other API service, ex. decode URIs
+   2. Use cache, and check if already have in keystore and use that,
+   3. Setup TTL days... can be months?  This is census style data
+3. Do we need to repull the api for the country details?  It is the exact same information in the /all
 
-In the project directory, you can run:
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+##NoSQL Data Schema
+1. Need to lookup what they mean?  Just a simple key/value pair like a Mongo schema?

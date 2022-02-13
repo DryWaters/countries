@@ -6,7 +6,7 @@ const Controls = (props : any) => (
     <div className={classes.Controls}>
         <input
             className={classes.filterText}
-            onChange={props.onFilterTextChange}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => props.onFilterTextChange(e.target.value)}
             type="text"
             value={props.filterText}
             placeholder="Search for a country..."

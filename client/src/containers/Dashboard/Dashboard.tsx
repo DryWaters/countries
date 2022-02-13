@@ -40,8 +40,8 @@ class Dashboard extends Component<AppProps, AppState> {
         this.filterCountryRegions(filterRegion);
     }
 
-    handleFilterTextChange = () => {
-        console.log("Not implemented yet!");
+    handleFilterTextChange = (filterText: string) => {
+        this.filterCountryText(filterText);
     }
 
     filterCountryRegions = (filterRegion: Region) => {
@@ -49,6 +49,14 @@ class Dashboard extends Component<AppProps, AppState> {
             country["region"] === filterRegion
         );
         this.setState({filterRegion, filteredCountries: newCountries})
+    }
+
+    filterCountryText = (filterText: string) => {
+        const filter = filterText.toLowerCase();
+        const newCountries = [...this.state.countries].filter(country =>
+            country["name"].toLowerCase().includes(filter)
+        );
+        this.setState({filterText, filteredCountries: newCountries});
     }
 
     handleThemeChange = () => {
