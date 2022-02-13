@@ -1,0 +1,33 @@
+@import "../../../variables";
+
+.Controls {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10rem;
+  justify-content: space-between;
+  font-size: $text-xlarge-size;
+}
+
+.filterText {
+  background-color: $color-grey-1;
+  border: 2px solid $color-secondary;
+  padding: 6px 5px;
+  min-width: 20rem;
+  &:focus {
+    background-color: lighten($color-grey-2, 30%);
+  }
+}
+
+.filterRegion {
+  background-color: $color-grey-1;
+  border: 2px solid $color-secondary;
+  &:focus {
+    background-color: lighten($color-grey-2, 30%);
+  }
+}
+
+@media (min-width: 800px) {
+  .filterText {
+    min-width: 30rem;
+  }
+}

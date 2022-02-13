@@ -1,0 +1,41 @@
+@import "../../../variables.scss";
+
+.Header {
+  align-items: center;
+  background-color: $text-color-light;
+  box-shadow: 0px 10px 10px rgba($color-grey-3, 0.5);
+  box-sizing: border-box;
+  color: $text-color-dark;
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  left: 0;
+  padding: 0 15rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 90;
+}
+
+.logoText {
+  font-family: "Helvetica";
+  font-size: $text-medium-size;
+  //letter-spacing: 0.1rem;
+  font-weight: bold;
+}
+
+@media (min-width: 500px) {
+  .Header {
+    height: 7rem;
+  }
+
+  .logoText {
+    font-size: $text-medium-size;
+  }
+}
+
+@media (min-width: 900px) {
+  .logoText {
+    font-size: $text-large-size;
+  }
+}
