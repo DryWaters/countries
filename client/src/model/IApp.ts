@@ -18,7 +18,7 @@ interface Country {
     region: string;
 }
 
-export interface AppState {
+export interface DashboardState {
     countries: Country[];
     filteredCountries: Country[];
     filterRegion: Region;

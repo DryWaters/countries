@@ -23,10 +23,12 @@ const CountryDetails = () => {
     useEffect(() => {
 
         const fetchDetails = async () => {
-            const res: Response = await fetch(`${jsonURL}/name/${name}`);
-            if (res.status === 200 || res.status === 304) {
-                const details = await res.json();
-                setDetails({...details});
+            if (typeof name === "string") {
+                const res: Response = await fetch(`${jsonURL}/name/${decodeURIComponent(name)}`);
+                if (res.status === 200 || res.status === 304) {
+                    const details = await res.json();
+                    setDetails({...details});
+                }
             }
         }
 

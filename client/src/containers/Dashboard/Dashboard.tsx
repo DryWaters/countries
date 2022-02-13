@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {AppState, Region} from "../../model/IApp";
+import {DashboardState, Region} from "../../model/IApp";
 
 import Country from "../../components/Country/Country";
 
@@ -13,7 +13,7 @@ const jsonURL = process.env.REACT_APP_API_URL;
 
 const Dashboard = () => {
 
-    const [countryState, setCountries] = useState<AppState>({
+    const [countryState, setCountries] = useState<DashboardState>({
         countries: [],
         filteredCountries: [],
         filterRegion: Region.ALL,

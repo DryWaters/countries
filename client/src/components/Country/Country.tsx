@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Country = (props: any) => {
 
     return (
-        <Link to={`/${props.name}`}>
+        <Link to={`/${encodeURIComponent(props.name)}`}>
             <button className={classes.Country}>
                 <img src="https://via.placeholder.com/150" />
                 <div className={classes.name}>{props.name}</div>
