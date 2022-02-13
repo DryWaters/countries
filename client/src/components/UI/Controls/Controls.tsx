@@ -1,13 +1,9 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 
 import classes from "./Controls.module.scss";
-import { Region } from "../../../model/IApp";
 
 const Controls = (props : any) => (
     <div className={classes.Controls}>
-        <label htmlFor="filterText">
-            <span className={classes.screenReader}>Filter Text</span>
-        </label>
         <input
             className={classes.filterText}
             onChange={props.onFilterTextChange}
@@ -16,22 +12,19 @@ const Controls = (props : any) => (
             placeholder="Search for a country..."
             id="filterText"
         />
-        <label htmlFor="filterType">
-            <span className={classes.screenReader}>Filter Type</span>
-        </label>
         <select
             className={classes.filterRegion}
-            onChange={props.onFilterRegionChange}
+            onChange={(e: ChangeEvent<HTMLSelectElement>) => props.onFilterRegionChange(e.target.value)}
             value={props.filterRegion}
             id="filterRegion"
+            required
         >
-            { Object.keys(Region).map(value => {
-                return <option key={value} value={value}>{value}</option>
-            }) }
-            {/*<option value="isbn">ISBN</option>*/}
-            {/*<option value="title">Title</option>*/}
-            {/*<option value="author">Author</option>*/}
-            {/*<option value="description">Description</option>*/}
+                <option value="Africa">Africa</option>
+                <option value="Americas">America</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+                <option value="Oceania">Oceania</option>
+
         </select>
     </div>
 );

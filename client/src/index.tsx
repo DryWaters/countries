@@ -1,15 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route
+} from "react-router-dom";
 
 import './index.scss';
 
 import Dashboard from './containers/Dashboard/Dashboard';
 
 import reportWebVitals from './reportWebVitals';
+import CountryDetails from "./components/CountryDetails/CountryDetails";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Dashboard />
+      <Router>
+          <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/:countryName" element={<CountryDetails />} />
+          </Routes>
+      </Router>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

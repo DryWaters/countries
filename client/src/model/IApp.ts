@@ -1,7 +1,7 @@
 export enum Region {
     ALL = "All",
     AFRICA = "Africa",
-    AMERICA = "America",
+    AMERICAS = "Americas",
     ASIA = "Asia",
     EUROPE = "Europe",
     OCEANIA = "Oceania"
@@ -24,6 +24,17 @@ export interface AppState {
     filterRegion: Region;
     filterText: string;
     selectedCountryName: string;
+}
+
+export interface DetailsState {
+    name: string;
+    topLevelDomain: string[];
+    alpha2Code: string;
+    alpha3Code: string;
+    callingCodes: string[];
+    capital: string;
+    altSpellings: string[];
+    region: string;
 }
 
 export interface AppProps {

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component, ReactNode} from "react";
 import { AppProps, AppState, Region } from "../../model/IApp";
 
 import Country from "../../components/Country/Country";
@@ -31,25 +31,31 @@ class Dashboard extends Component<AppProps, AppState> {
                 }
             })
             .then(data => {
-                this.setState({ filteredCountries: data })
+                this.setState({ countries: data, filteredCountries: data })
             })
             .catch(err => console.log(err));
     }
 
-    handleFilterRegion = () => {
-
+    handleFilterRegionChange = (filterRegion: Region) => {
+        this.filterCountryRegions(filterRegion);
     }
 
-    handleFilterText = () => {
-
-    }
-
-    changeTheme = () => {
+    handleFilterTextChange = () => {
         console.log("Not implemented yet!");
     }
 
+    filterCountryRegions = (filterRegion: Region) => {
+        const newCountries = [...this.state.countries].filter(country =>
+            country["region"] === filterRegion
+        );
+        this.setState({filterRegion, filteredCountries: newCountries})
+    }
 
-    render = () => {
+    handleThemeChange = () => {
+        console.log("Not implemented yet!");
+    }
+
+    render = (): ReactNode => {
         // if no countries available show spinner
         let countries: (JSX.Element | JSX.Element[]) = (
             <div className={classes.spinnerContainer}>
@@ -71,10 +77,10 @@ class Dashboard extends Component<AppProps, AppState> {
 
         return (
             <div className={classes.Dashboard}>
-                <Header handleThemeChange={() => this.changeTheme()} />
+                <Header onThemeChange={() => this.handleThemeChange()} />
                 <Controls
-                    onFilterRegionChange={this.handleFilterRegion}
-                    onFilterTextChange={this.handleFilterText}
+                    onFilterRegionChange={this.handleFilterRegionChange}
+                    onFilterTextChange={this.handleFilterTextChange}
                     filterText={this.state.filterText}
                     filterRegion={this.state.filterRegion}
                 />

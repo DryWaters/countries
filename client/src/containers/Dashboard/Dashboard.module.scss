@@ -1,0 +1,23 @@
+@import "../../variables.scss";
+
+.Dashboard {
+  background-color: $color-primary;
+  min-height: 100vh;
+  padding-top: 8rem;
+}
+
+.countries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.spinnerContainer {
+  margin-top: 2rem;
+}
+
+@media (min-width: 500px) {
+  .Dashboard {
+    padding-top: 10rem;
+  }
+}
