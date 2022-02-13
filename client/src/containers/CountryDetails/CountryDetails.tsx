@@ -24,7 +24,7 @@ const CountryDetails = () => {
 
         const fetchDetails = async () => {
             if (typeof name === "string") {
-                const res: Response = await fetch(`${jsonURL}/name/${decodeURIComponent(name)}`);
+                const res: Response = await fetch(`${jsonURL}/countries/${decodeURIComponent(name)}`);
                 if (res.status === 200 || res.status === 304) {
                     const details = await res.json();
                     setDetails({...details});
@@ -34,7 +34,7 @@ const CountryDetails = () => {
 
         fetchDetails().catch(console.error);
 
-    }, [])
+    }, [name])
 
     return (
         <div>
