@@ -1,5 +1,31 @@
 @import "../../variables.scss";
 
 .Country {
+  margin: 2rem;
+  border-radius: 5px;
+  border: none;
+  background-color: $color-white;
+  box-shadow: 0px 5px 5px rgba($color-grey-2, 0.4);
+  overflow: hidden;
+}
 
+.statContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 2rem;
+  height: 17.5rem;
+  width: 27.5rem;
+  font-size: $text-small-size;
+}
+
+.name {
+  font-weight: bold;
+  font-size: $text-medium-size;
+}
+
+.category {
+  font-weight: 600;
+  padding: 5rem 0;
 }

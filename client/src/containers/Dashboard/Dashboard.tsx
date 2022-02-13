@@ -78,7 +78,7 @@ const Dashboard = () => {
         setCountries({
             countries: countryState.countries,
             filterRegion: countryState.filterRegion,
-            filterText: countryState.filterText,
+            filterText,
             filteredCountries: newCountries}
         );
     }

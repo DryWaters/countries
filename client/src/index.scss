@@ -22,7 +22,7 @@ html {
 
 body {
   color: $text-color-dark;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Helvetica", sans-serif;
   font-weight: 400;
   font-size: $text-medium-size;
   line-height: 1.6;
@@ -30,10 +30,4 @@ body {
 
 ::placeholder {
   color: $color-grey-3;
-}
-
-.error {
-  color: $color-danger;
-  font-size: $text-large-size;
-  font-weight: bold;
 }

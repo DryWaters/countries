@@ -1,7 +1,102 @@
 @import "../../variables";
 
 .CountryDetails {
-  background-color: $color-primary;
+  background-color: $color-grey-1;
   min-height: 100vh;
-  padding-top: 20rem;
+  padding: 10rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.Link {
+  text-decoration: none;
+}
+
+.flagImage {
+  max-width: 100%;
+}
+
+.backButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-size: $text-small-size;
+  padding: 0.75rem;
+  border-radius: 4px;
+  min-width: 10rem;
+  box-shadow: 0px 5px 5px rgba($color-grey-2, 0.4);
+  background-color: $color-white;
+  border: 2px solid $color-white;
+  margin-bottom: 5rem;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $color-grey-1;
+    border: 2px solid black;
+  }
+
+  &:active {
+    box-shadow: -1px -1px 1px #000;
+  }
+}
+
+.statContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding-top: 2rem;
+  min-height: 20rem;
+  max-height: 50rem;
+  font-size: $text-small-size;
+}
+
+.name {
+  font-weight: bold;
+  font-size: $text-large-size;
+}
+
+.category {
+  font-weight: 600;
+}
+
+
+.borderButton {
+  margin: 0.5rem;
+  font-size: $text-small-size;
+  padding: 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0px 5px 5px rgba($color-grey-2, 0.4);
+  background-color: $color-white;
+  border: 2px solid $color-white;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $color-grey-1;
+    border: 2px solid black;
+  }
+
+  &:active {
+    box-shadow: -1px -1px 1px #000;
+  }
+}
+
+
+@media (min-width: 800px) {
+  .CountryDetails {
+    flex-direction: row;
+  }
+
+  .statContainer {
+    padding: 5rem 0 0 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+
+@media (min-width: 1000px) {
+  .statContainer {
+    padding: 10rem 0 0 10rem;
+  }
 }

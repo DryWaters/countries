@@ -17,8 +17,8 @@ const Controls = (props: ControlsProps) => (
             onChange={(e: ChangeEvent<HTMLInputElement>) => props.onFilterTextChange(e.target.value)}
             type="text"
             value={props.filterText}
-            placeholder="Search for a country..."
             id="filterText"
+            placeholder="&#x1F50D;     Search for a country..."
         />
         <select
             className={classes.filterRegion}

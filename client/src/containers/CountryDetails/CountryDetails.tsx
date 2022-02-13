@@ -40,13 +40,20 @@ const CountryDetails = () => {
         <div>
             <Header />
             <div className={classes.CountryDetails}>
-                <Link to="/"><button>Back</button></Link>
-                <img alt="Country Flag" src="https://via.placeholder.com/300"/>
-                <div className={classes.name}>{details.id}</div>
-                <div
-                    className={classes.details}>Population: {Math.floor(Math.random() * (10000000 - 500000 + 1)) + 500000}</div>
-                <div className={classes.details}>Region: {details.region}</div>
-                <div className={classes.details}>Capital: {details.capital}</div>
+                <div>
+                    <Link className={classes.Link} to="/"><button className={classes.backButton}><i className="fas fa-arrow-left"></i> Back</button></Link>
+                    <img className={classes.flagImage} alt="Country Flag" src="https://via.placeholder.com/500x400"/>
+                </div>
+                <div className={classes.statContainer}>
+                    <div className={classes.name}>{details.id}</div>
+                    <div className={classes.stats}>
+                        <div><span className={classes.category}>Population:</span> {Math.floor(Math.random() * (10000000 - 500000 + 1)) + 500000}</div>
+                        <div><span className={classes.category}>Region: </span> {details.region}</div>
+                        <div><span className={classes.category}>Capital: </span> {details.capital}</div>
+                        <div><span className={classes.category}>Top Level Domain: </span> {details.topLevelDomain}</div>
+                    </div>
+                    <div><span className={classes.category}>Border Countries: </span><button className={classes.borderButton}>Somewhere</button><button className={classes.borderButton}>Somewhere Else</button></div>
+                </div>
             </div>
         </div>
     );

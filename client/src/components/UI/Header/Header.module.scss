@@ -1,41 +1,60 @@
 @import "../../../variables.scss";
 
 .Header {
-  align-items: center;
-  background-color: $text-color-light;
-  box-shadow: 0px 10px 10px rgba($color-grey-3, 0.5);
-  box-sizing: border-box;
-  color: $text-color-dark;
   display: flex;
   justify-content: space-between;
-  height: 5rem;
-  left: 0;
-  padding: 0 15rem;
-  position: fixed;
+  align-items: center;
+
+  background-color: $color-white;
+  box-shadow: 0px 5px 5px rgba($color-grey-2, 0.4);
+  box-sizing: border-box;
+  color: $text-color-dark;
+
+  height: 8rem;
   top: 0;
-  width: 100%;
+  left: 0;
+  padding: 0 2rem;
+  position: fixed;
+  width: 100vw;
   z-index: 90;
 }
 
 .logoText {
-  font-family: "Helvetica";
   font-size: $text-medium-size;
-  //letter-spacing: 0.1rem;
   font-weight: bold;
 }
 
-@media (min-width: 500px) {
-  .Header {
-    height: 7rem;
+.themeToggle {
+  font-size: $text-small-size;
+  font-weight: bold;
+  padding: 1rem;
+  background-color: $color-white;
+  border: 2px solid $color-white;
+
+  &:hover {
+    background-color: $color-grey-1;
+    border: 2px solid black;
+    border-radius: 10px;
   }
 
-  .logoText {
-    font-size: $text-medium-size;
+  &:active {
+    margin: 1px 1px 0;
+    box-shadow: -1px -1px 1px #000;
   }
 }
 
+@media (min-width: 500px) {
+  //.Header {
+  //  height: 10rem;
+  //}
+  //
+  //.logoText {
+  //  font-size: $text-medium-size;
+  //}
+}
+
 @media (min-width: 900px) {
-  .logoText {
-    font-size: $text-large-size;
-  }
+  //.logoText {
+  //  font-size: $text-large-size;
+  //}
 }

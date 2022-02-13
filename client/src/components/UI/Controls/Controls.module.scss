@@ -2,28 +2,35 @@
 
 .Controls {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: 2rem;
-  justify-content: space-between;
+  justify-content: space-evenly;
   font-size: $text-xlarge-size;
+  width: 100vw;
 }
 
 .filterText {
-  background-color: $color-grey-1;
-  border: 2px solid $color-secondary;
-  padding: 6px 5px;
-  min-width: 20rem;
-  &:focus {
-    background-color: lighten($color-grey-2, 30%);
-  }
+  background-color: $color-white;
+  box-shadow: 0px 5px 5px rgba($color-grey-1, 0.4);
+  border-style: none;
+  outline: none;
+  padding: 2rem;
+  width: 90%;
+  max-width: 40rem;
+  margin: 0 2rem;
+  border-radius: 5px;
 }
 
 .filterRegion {
-  background-color: $color-grey-1;
-  border: 2px solid $color-secondary;
-  &:focus {
-    background-color: lighten($color-grey-2, 30%);
-  }
+  background-color: $color-white;
+  box-shadow: 0px 5px 5px rgba($color-grey-1, 0.4);
+  border-style: none;
+  outline: none;
+  padding: 2rem;
+  width: 50%;
+  max-width: 30rem;
+  margin: 2rem 2rem;
+  border-radius: 5px;
 }
 
 @media (min-width: 800px) {
