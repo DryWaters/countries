@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 
 import classes from "./CountryDetails.module.scss";
 import {Link, useParams} from "react-router-dom";
-import { AppProps, DetailsState } from "../../model/IApp";
 import Header from "../UI/Header/Header";
+import {DetailsState} from "../../model/IApp";
 
 const jsonURL = process.env.REACT_APP_API_URL;
 
 const CountryDetails = () => {
-    const { countryName } = useParams();
-    const [details, setDetails] = useState({
-        name: "",
+    const { name } = useParams();
+    const [details, setDetails] = useState<DetailsState>({
+        id: "",
         topLevelDomain: [],
         alpha2Code: "",
         alpha3Code: "",
@@ -21,28 +21,26 @@ const CountryDetails = () => {
     });
 
     useEffect(() => {
-        fetch(`${jsonURL}/name/${countryName}`)
-            .then(res => {
-                if (res.status === 200 || res.status === 304) {
-                    return res.json();
-                } else {
-                    return Promise.reject("Error!");
-                }
-            })
-            .then(data => {
-                setDetails({ ...data })
-            })
-            .catch(err => console.log(err));
-    }, [])
 
+        const fetchDetails = async () => {
+            const res: Response = await fetch(`${jsonURL}/name/${name}`);
+            if (res.status === 200 || res.status === 304) {
+                const details = await res.json();
+                setDetails({...details});
+            }
+        }
+
+        fetchDetails().catch(console.error);
+
+    }, [])
 
     return (
         <div>
             <Header />
             <div className={classes.CountryDetails}>
                 <Link to="/"><button>Back</button></Link>
-                <img src="https://via.placeholder.com/300"/>
-                <div className={classes.name}>{details.name}</div>
+                <img alt="Country Flag" src="https://via.placeholder.com/300"/>
+                <div className={classes.name}>{details.id}</div>
                 <div
                     className={classes.details}>Population: {Math.floor(Math.random() * (10000000 - 500000 + 1)) + 500000}</div>
                 <div className={classes.details}>Region: {details.region}</div>

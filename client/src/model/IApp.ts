@@ -27,7 +27,7 @@ export interface AppState {
 }
 
 export interface DetailsState {
-    name: string;
+    id: string;
     topLevelDomain: string[];
     alpha2Code: string;
     alpha3Code: string;

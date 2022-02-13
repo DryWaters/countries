@@ -1,8 +1,8 @@
 #TODO:
 
 ##Client
-1. Filter by country name &#10003;
-2. Change to name from countryName for route
+1. Filter by country name ✅
+2. Change to name from countryName for route ✅
 3. Update one container to FC with hooks
 4. Fix Select Dropdown to match screenshots
 5. Encode/Decode URI to deal with names with spaces?  

@@ -18,7 +18,7 @@ ReactDOM.render(
       <Router>
           <Routes>
               <Route path="/" element={<Dashboard />} />
-              <Route path="/:countryName" element={<CountryDetails />} />
+              <Route path="/:name" element={<CountryDetails />} />
           </Routes>
       </Router>
 

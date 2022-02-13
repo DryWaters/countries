@@ -97,8 +97,6 @@ class Dashboard extends Component<AppProps, AppState> {
         );
     }
 
-
-
 }
 
 export default Dashboard;
