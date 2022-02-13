@@ -1,5 +1,5 @@
-import React, {Component, ReactNode} from "react";
-import { AppProps, AppState, Region } from "../../model/IApp";
+import React, {useEffect, useState} from "react";
+import { AppState, Region } from "../../model/IApp";
 
 import Country from "../../components/Country/Country";
 
@@ -11,91 +11,104 @@ import classes from './Dashboard.module.scss';
 
 const jsonURL = process.env.REACT_APP_API_URL;
 
-class Dashboard extends Component<AppProps, AppState> {
+const Dashboard = () => {
 
-    state: AppState = {
+    const [countryState, setCountries] = useState<AppState>({
         countries: [],
         filteredCountries: [],
         filterRegion: Region.ALL,
-        filterText: "",
-        selectedCountryName: "",
+        filterText: ""
+    })
+
+    useEffect( () => {
+
+        const fetchCountries = async () => {
+            const res: Response = await fetch(jsonURL + "/countries")
+            if (res.status === 200 || res.status === 304) {
+                const countries = await res.json();
+                setCountries({
+                    countries: countries,
+                    filteredCountries: countries,
+                    filterRegion: Region.ALL,
+                    filterText: "",
+                });
+            }
+        }
+
+        fetchCountries().catch(console.error);
+
+    }, []);
+
+    const handleFilterRegionChange = (filterRegion: Region) => {
+        filterCountryRegions(filterRegion);
     }
 
-    componentDidMount = () => {
-        fetch(jsonURL + "/countries")
-            .then(res => {
-                if (res.status === 200) {
-                    return res.json();
-                } else {
-                    return Promise.reject("Error!");
-                }
-            })
-            .then(data => {
-                this.setState({ countries: data, filteredCountries: data })
-            })
-            .catch(err => console.log(err));
+    const handleFilterTextChange = (filterText: string) => {
+        filterCountryText(filterText);
     }
 
-    handleFilterRegionChange = (filterRegion: Region) => {
-        this.filterCountryRegions(filterRegion);
-    }
-
-    handleFilterTextChange = (filterText: string) => {
-        this.filterCountryText(filterText);
-    }
-
-    filterCountryRegions = (filterRegion: Region) => {
-        const newCountries = [...this.state.countries].filter(country =>
+    const filterCountryRegions = (filterRegion: Region) => {
+        const newCountries = [...countryState.countries].filter(country =>
             country["region"] === filterRegion
         );
-        this.setState({filterRegion, filteredCountries: newCountries})
+        setCountries({
+            countries: countryState.countries,
+            filterText: countryState.filterText,
+            filterRegion,
+            filteredCountries: newCountries}
+        );
     }
 
-    filterCountryText = (filterText: string) => {
+    const filterCountryText = (filterText: string) => {
         const filter = filterText.toLowerCase();
-        const newCountries = [...this.state.countries].filter(country =>
+        const newCountries = [...countryState.countries].filter(country =>
             country["name"].toLowerCase().includes(filter)
         );
-        this.setState({filterText, filteredCountries: newCountries});
+
+        setCountries({
+            countries: countryState.countries,
+            filterRegion: countryState.filterRegion,
+            filterText: countryState.filterText,
+            filteredCountries: newCountries}
+        );
     }
 
-    handleThemeChange = () => {
+    const handleThemeChange = () => {
         console.log("Not implemented yet!");
     }
 
-    render = (): ReactNode => {
-        // if no countries available show spinner
-        let countries: (JSX.Element | JSX.Element[]) = (
-            <div className={classes.spinnerContainer}>
-                <p>No countries found. Check filter options.</p>
-                <Spinner />
-            </div>
-        );
+    // if no countries available show spinner
+    let countries: (JSX.Element | JSX.Element[]) = (
+        <div className={classes.spinnerContainer}>
+            <p>No countries found. Check filter options.</p>
+            <Spinner />
+        </div>
+    );
 
-        // create countries to display by mapping over retrieved countries
-        // from backend.
-        if (this.state.filteredCountries && this.state.filteredCountries.length > 0) {
-            countries = this.state.filteredCountries.map(country => (
-                <Country
-                    key={country.name}
-                    {...country}
-                />
-            ));
-        }
-
-        return (
-            <div className={classes.Dashboard}>
-                <Header onThemeChange={() => this.handleThemeChange()} />
-                <Controls
-                    onFilterRegionChange={this.handleFilterRegionChange}
-                    onFilterTextChange={this.handleFilterTextChange}
-                    filterText={this.state.filterText}
-                    filterRegion={this.state.filterRegion}
-                />
-                <main className={classes.countries}>{countries}</main>
-            </div>
-        );
+    // create countries to display by mapping over retrieved countries
+    // from backend.
+    if (countryState.filteredCountries && countryState.filteredCountries.length > 0) {
+        countries = countryState.filteredCountries.map(country => (
+            <Country
+                key={country.name}
+                {...country}
+            />
+        ));
     }
+
+    return (
+
+        <div className={classes.Dashboard}>
+            <Header onThemeChange={() => handleThemeChange()} />
+            <Controls
+                onFilterRegionChange={handleFilterRegionChange}
+                onFilterTextChange={handleFilterTextChange}
+                filterText={countryState.filterText}
+                filterRegion={countryState.filterRegion}
+            />
+            <main className={classes.countries}>{countries}</main>
+        </div>
+    );
 
 }
 

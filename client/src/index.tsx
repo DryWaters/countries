@@ -11,7 +11,7 @@ import './index.scss';
 import Dashboard from './containers/Dashboard/Dashboard';
 
 import reportWebVitals from './reportWebVitals';
-import CountryDetails from "./components/CountryDetails/CountryDetails";
+import CountryDetails from "./containers/CountryDetails/CountryDetails";
 
 ReactDOM.render(
   <React.StrictMode>

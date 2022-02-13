@@ -23,7 +23,6 @@ export interface AppState {
     filteredCountries: Country[];
     filterRegion: Region;
     filterText: string;
-    selectedCountryName: string;
 }
 
 export interface DetailsState {

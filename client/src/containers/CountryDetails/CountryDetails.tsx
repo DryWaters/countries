@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import classes from "./CountryDetails.module.scss";
 import {Link, useParams} from "react-router-dom";
-import Header from "../UI/Header/Header";
+import Header from "../../components/UI/Header/Header";
 import {DetailsState} from "../../model/IApp";
 
 const jsonURL = process.env.REACT_APP_API_URL;
