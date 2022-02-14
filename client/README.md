@@ -1,3 +1,13 @@
+#Run
+To start development mode:
+
+npm run dev
+
+This starts up 3 services:
+1. json-server serving a clone of the countrylayer.com data set
+2. one express server that is proxy between React and the json-server
+3. SPA React client that calls the express server for Country data
+
 #TODO:
 
 ##Client
@@ -10,14 +20,14 @@
    2. Why no pagination?  Really big API calls don't need 300 at a time
 6. Styling ✅
 7. Mobile CSS Rules ✅
-8. DARK Mode??  Variables with SASS?  Can do like [theme].[component].[element]?
+8. DARK Mode?  Variables with SASS?  Can do like [theme].[component].[element]?
    1. What to do if we have a bunch of different themes?
 
 ##Server
 1. Build out API ✅
    1. /api/countries
    2. /api/countries/:name
-2. Add middleware that uses inmemory-cache
+2. Add middleware that uses inmemory-cache ✅
    1. Proxy between front end and this other API service, ex. decode URIs
    2. Use cache, and check if already have in keystore and use that,
    3. Setup TTL days... can be months?  This is census style data

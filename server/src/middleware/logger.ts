@@ -6,8 +6,7 @@ export default (req: Request, res: Response, next: (param?: unknown) => void): v
     console.table([{
         date: `${date.toLocaleDateString()} - ${date.toLocaleTimeString()}`,
         method: req.method,
-        url: `${req.baseUrl}${req.url}`,
-        body: req.body
+        url: `${req.baseUrl}${req.url}`
     }])
     next();
 }

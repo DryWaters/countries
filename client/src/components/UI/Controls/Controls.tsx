@@ -23,7 +23,6 @@ const Controls = (props: ControlsProps) => (
         <select
             className={classes.filterRegion}
             onChange={(e: ChangeEvent<HTMLSelectElement>) => {
-                    console.log("Selected region: " + e.target.value);
                     return props.onFilterRegionChange(e.target.value as Region)
             }}
             value={props.filterRegion}

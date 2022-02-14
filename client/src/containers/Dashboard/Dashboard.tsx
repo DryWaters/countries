@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {DashboardState, Region} from "../../model/IApp";
+import { DashboardState, Region } from "../../model/IApp";
 
 import Country from "../../components/Country/Country";
 
