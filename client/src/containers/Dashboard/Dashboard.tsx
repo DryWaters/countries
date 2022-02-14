@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { DashboardState, Region } from "../../model/IApp";
+import {DashboardState, Region} from "../../model/IApp";
 
 import Country from "../../components/Country/Country";
 
@@ -40,46 +40,26 @@ const Dashboard = () => {
     }, []);
 
     const handleFilterRegionChange = (filterRegion: Region) => {
-        filterCountryRegions(filterRegion);
+        filterCountries(countryState.filterText, filterRegion);
     }
 
     const handleFilterTextChange = (filterText: string) => {
-        filterCountryText(filterText);
+        filterCountries(filterText, countryState.filterRegion);
     }
 
-    const filterCountryRegions = (filterRegion: Region) => {
+    const filterCountries = (filterText: string, filterRegion: Region) => {
 
-        if (filterRegion === Region.ALL) {
-            return setCountries({
+        const newCountries = [...countryState.countries].filter(country => {
+            return (filterRegion === Region.ALL || country["region"] === filterRegion)
+                && (filterText.trim().length == 0 || country["name"].toLowerCase().includes(filterText.toLowerCase()))
+        });
+
+        setCountries({
                 countries: countryState.countries,
-                filterText: countryState.filterText,
-                filterRegion,
-                filteredCountries: countryState.countries}
-            );
-        }
-
-        const newCountries = [...countryState.countries].filter(country =>
-            country["region"] === filterRegion
-        );
-        setCountries({
-            countries: countryState.countries,
-            filterText: countryState.filterText,
-            filterRegion,
-            filteredCountries: newCountries}
-        );
-    }
-
-    const filterCountryText = (filterText: string) => {
-        const filter = filterText.toLowerCase();
-        const newCountries = [...countryState.countries].filter(country =>
-            country["name"].toLowerCase().includes(filter)
-        );
-
-        setCountries({
-            countries: countryState.countries,
-            filterRegion: countryState.filterRegion,
-            filterText,
-            filteredCountries: newCountries}
+                filteredCountries: newCountries,
+                filterText,
+                filterRegion
+            }
         );
     }
 
