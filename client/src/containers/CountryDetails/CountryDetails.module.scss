@@ -24,7 +24,7 @@
   padding: 0.75rem;
   border-radius: 4px;
   min-width: 10rem;
-  box-shadow: 0px 5px 5px rgba($color-grey-2, 0.4);
+  box-shadow: 0 5px 5px rgba($color-grey-2, 0.4);
   background-color: $color-white;
   border: 2px solid $color-white;
   margin-bottom: 5rem;
@@ -51,6 +51,10 @@
   font-size: $text-small-size;
 }
 
+.stats {
+  line-height: 3rem;
+}
+
 .name {
   font-weight: bold;
   font-size: $text-large-size;
@@ -60,13 +64,12 @@
   font-weight: 600;
 }
 
-
 .borderButton {
   margin: 0.5rem;
   font-size: $text-small-size;
   padding: 0.5rem;
   border-radius: 4px;
-  box-shadow: 0px 5px 5px rgba($color-grey-2, 0.4);
+  box-shadow: 0 5px 5px rgba($color-grey-2, 0.4);
   background-color: $color-white;
   border: 2px solid $color-white;
   text-decoration: none;
@@ -81,6 +84,18 @@
   }
 }
 
+.spinnerContainer {
+  padding-top: 10rem;
+  text-align: center;
+  background-color: $color-grey-1;
+  height: 100vh;
+}
+
+.error {
+  color: red;
+  font-size: $text-large-size;
+  font-weight: bold;
+}
 
 @media (min-width: 800px) {
   .CountryDetails {

@@ -15,4 +15,11 @@
 
 .spinnerContainer {
   margin-top: 2rem;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  font-size: $text-large-size;
+  font-weight: bold;
 }

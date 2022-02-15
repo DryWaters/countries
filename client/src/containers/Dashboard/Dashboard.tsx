@@ -9,7 +9,7 @@ import Header from "../../components/UI/Header/Header";
 
 import classes from './Dashboard.module.scss';
 
-const jsonURL = process.env.REACT_APP_API_URL;
+const jsonURL = process.env.REACT_APP_EXPRESS_URL;
 
 const Dashboard = () => {
 
@@ -20,11 +20,17 @@ const Dashboard = () => {
         filterText: ""
     })
 
+    const [error, setError] = useState<{ message: string | null }>( {
+        message: null
+    })
+
     useEffect( () => {
 
         const fetchCountries = async () => {
+
             const res: Response = await fetch(jsonURL + "/countries")
             if (res.status === 200 || res.status === 304) {
+
                 const countries = await res.json();
                 setCountries({
                     countries: countries,
@@ -32,10 +38,22 @@ const Dashboard = () => {
                     filterRegion: Region.ALL,
                     filterText: "",
                 });
+                setError({
+                    message: null
+                })
+
+            } else {
+
+                setError({ message: res.statusText })
+
             }
         }
 
-        fetchCountries().catch(console.error);
+        fetchCountries().catch((err) => {
+
+            setError({ message: err })
+
+        });
 
     }, []);
 
@@ -51,7 +69,7 @@ const Dashboard = () => {
 
         const newCountries = [...countryState.countries].filter(country => {
             return (filterRegion === Region.ALL || country["region"] === filterRegion)
-                && (filterText.trim().length == 0 || country["name"].toLowerCase().includes(filterText.toLowerCase()))
+                && (filterText.trim().length === 0 || country["name"].toLowerCase().includes(filterText.toLowerCase()))
         });
 
         setCountries({
@@ -70,7 +88,8 @@ const Dashboard = () => {
     // if no countries available show spinner
     let countries: (JSX.Element | JSX.Element[]) = (
         <div className={classes.spinnerContainer}>
-            <p>No countries found. Check filter options.</p>
+            <div>No countries found. Check filter options.</div>
+            { !!error.message && <div className={classes.error}>Error fetching countries with message: {error.message}</div> }
             <Spinner />
         </div>
     );

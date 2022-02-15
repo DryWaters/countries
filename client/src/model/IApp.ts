@@ -26,7 +26,7 @@ export interface DashboardState {
 }
 
 export interface DetailsState {
-    id: string;
+    name: string;
     topLevelDomain: string[];
     alpha2Code: string;
     alpha3Code: string;
