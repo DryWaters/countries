@@ -1,0 +1,49 @@
+Continent Model:
+Use Cases:
+1. Need to fetch Continents and always need all ocean and mountain data.
+2. Do not always need to fetch country information
+3. Countries may need to know the Continent information they reside in
+4. Continent data with very little change
+
+Notes:
+1. Countries per continent is limited so storing ids in an array should not be a problem.  Africa largest with 54.
+2. Depending on use cases, embedding the countries directly into the Continent collection may be beneficial vs lookups
+3.
+
+
+<<Collection>>
+continent
+{
+  "_id": objectId,
+  "name": string
+  "land_mass": long
+  "population": long
+
+  "oceans": [
+    "name": string
+    "max_depth": int
+  ]
+
+  "mountains": [
+    "name": string,
+    "max_height": int
+  ]
+
+  "countries": [
+    "country_id": objectId
+  ]
+}
+
+
+<<Collection>>
+country
+{
+  "_id": objectId
+  "name": string
+  "languages" [
+    "name": string
+  ]
+  "capital": string
+
+  "continent_id": objectId
+}

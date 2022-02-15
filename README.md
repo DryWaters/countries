@@ -1,38 +1,25 @@
-#Run
-To start development mode:
+# Run
+**Requirements**
+To start development mode, requires global installations of nodemon and json-server.
 
-npm run dev
+1. npm install-all-deps
+2. npm run dev
 
 This starts up 3 services:
 1. json-server serving a clone of the countrylayer.com data set
-2. one express server that is proxy between React and the json-server
-3. SPA React client that calls the express server for Country data
+2. Express server that is proxy between the React front-end and the json-server
+3. SPA React client that calls the Express server for cached country data
 
-#TODO:
+## Contents
 
-##Client
-1. Filter by country name ✅
-2. Change to name from countryName for route ✅
-3. Update one container to FC with hooks ✅
-4. Fix Select Dropdown to match screenshots ✅
-5. Encode/Decode URI to deal with names with spaces? ✅
-   1. Why is this api not doing that??
-   2. Why no pagination?  Really big API calls don't need 300 at a time
-6. Styling ✅
-7. Mobile CSS Rules ✅
-8. DARK Mode?  Variables with SASS?  Can do like [theme].[component].[element]?
-   1. What to do if we have a bunch of different themes?
+**/client** 
+* Create React App front-end that pulls country details from the Express backend
 
-##Server
-1. Build out API ✅
-   1. /api/countries
-   2. /api/countries/:name
-2. Add middleware that uses inmemory-cache ✅
-   1. Proxy between front end and this other API service, ex. decode URIs
-   2. Use cache, and check if already have in keystore and use that,
-   3. Setup TTL days... can be months?  This is census style data
-3. Do we need to pull country details again?  It is the exact same information in the /all
+**/server**
+* JSON-Server represents countrylayer.com free public dataset as of 02/13/2022
+* Express server serving as a proxy between the React front-end and the JSON-Node server
+* Data is pulled from the JSON-Server and cached locally in the Express server (TTL of 7 days)
 
+**/nosql-model**
+* Simple Example Continent NOSql data model in JSON format
 
-##NoSQL Data Schema
-1. Example should be like a Mongo schema

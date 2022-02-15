@@ -1,7 +1,7 @@
 {
-  "name": "server",
+  "name": "countries",
   "version": "1.0.0",
-  "description": "",
+  "description": "Countries Express/Node/TS Demo Application",
   "main": "index.js",
   "scripts": {
     "client-install": "cd client && npm install",
